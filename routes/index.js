@@ -1,6 +1,6 @@
 const healthRouter = require('./health.router')
 
-function routerApi(app){
+const routerApi = (app) => {
   app.use('/health', healthRouter);
 }
 

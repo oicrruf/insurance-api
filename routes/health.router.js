@@ -1,12 +1,13 @@
 const express = require('express');
-var config = require("../package.json");
+const appInfo = require("../package.json");
 
 const router = express.Router();
 
 router.get('/',(req, res) => {
+    const { name, version} = appInfo;
     res.json({ 
-        name: config.name,
-        version: config.version
+        name: name,
+        version: version
     });
 });
 
