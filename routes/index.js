@@ -1,9 +1,7 @@
-var express = require("express");
-var router = express.Router();
+const healthRouter = require('./health.router')
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.send({ app: "insurance-api" });
-});
+function routerApi(app){
+  app.use('/health', healthRouter);
+}
 
-module.exports = router;
+module.exports = routerApi;
