@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "env": "sync-dotenv",
+    "prepare": "husky install"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,5 +15,14 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "sync-dotenv": "^2.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run env && git add ."
+    }
   }
 }
