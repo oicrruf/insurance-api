@@ -5,6 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
+    "env": "sync-dotenv",
+    "prepare": "husky install",
     "test": "jest --verbose --detectOpenHandles"
   },
   "dependencies": {
@@ -16,7 +18,14 @@
     "nodemon": "^2.0.15"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
+    "sync-dotenv": "^2.7.0",
     "jest": "^27.5.1",
     "supertest": "^6.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run env && git add ."
+    }
   }
 }
