@@ -9,6 +9,9 @@
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
     "migrations:revert": "sequelize-cli db:migrate:undo"
+    "env": "sync-dotenv",
+    "prepare": "husky install",
+    "format": "npx prettier --write . && git add ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -24,7 +27,15 @@
     "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
     "jest": "^27.5.1",
-    "supertest": "^6.2.2"
+    "prettier": "2.6.2",
+    "supertest": "^6.2.2",
+    "sync-dotenv": "^2.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run env && git add ."
+    }
   }
 }
