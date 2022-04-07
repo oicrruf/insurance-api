@@ -1,6 +1,8 @@
 const express = require('express');
 const UserService = require('../services/user.service');
 
+const { getUserSchema } = require('../schemas/user.schema');
+
 const router = express.Router();
 const service = new UserService();
 
