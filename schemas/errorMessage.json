@@ -1,0 +1,10 @@
+{
+  "en": {
+    "any.required": "unknown message in English",
+    "number.base": "\"id\" must be a number"
+  },
+  "es": {
+    "any.required": "unknown message in English",
+    "number.base": "\"id\" debe ser un numero"
+  }
+}
