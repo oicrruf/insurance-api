@@ -1,0 +1,12 @@
+{
+  "en": {
+    "any.required": "unknown message in English",
+    "number.base": "\"id\" must be a number",
+    "userNotFound": "User Not Found"
+  },
+  "es": {
+    "any.required": "unknown message in English",
+    "number.base": "\"id\" debe ser un numero",
+    "userNotFound": "Usuario no encontrado"
+  }
+}
