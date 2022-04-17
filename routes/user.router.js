@@ -19,7 +19,6 @@ router.get(
       const language = req.header('language')
         ? req.header('language')
         : config.language;
-
       if (!user) {
         res.status(404).json({
           message: errorMessage[language].userNotFound,
@@ -30,5 +29,21 @@ router.get(
     }
   }
 );
+router.get('/', async (req, res) => {
+  try {
+    const language = req.header('language')
+      ? req.header('language')
+      : config.language;
+    const users = await service.findAll();
+    console.log(users);
+    if (users.length === 0) {
+      res.status(404).json({
+        message: errorMessage[language].recordsNotFound,
+      });
+    } else res.json(users);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = router;
