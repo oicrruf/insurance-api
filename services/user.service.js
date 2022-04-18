@@ -7,9 +7,9 @@ class UserService {
 
   async findAll() {
     return await models.User.findAll({
-      attributes: { 
-        exclude: ['password'] 
-      }
+      attributes: {
+        exclude: ['password'],
+      },
     });
   }
 

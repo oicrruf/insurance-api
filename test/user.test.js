@@ -21,6 +21,6 @@ describe('/users:id', () => {
       .expect('Content-Type', /json/);
 
     expect(typeof res.body === 'object').toBe(true);
-    expect(res.body.userId).toBe("1");
+    expect(res.body.userId).toBe('1');
   });
 });

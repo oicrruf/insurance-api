@@ -18,8 +18,8 @@ router.get(
       const user = {
         userId,
         email,
-        createdAt
-      }
+        createdAt,
+      };
 
       const language = req.header('language')
         ? req.header('language')
@@ -28,7 +28,7 @@ router.get(
         res.status(404).json({
           message: errorMessage[language].userNotFound,
         });
-      } else {        
+      } else {
         res.json(user);
       }
     } catch (error) {
