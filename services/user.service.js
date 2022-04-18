@@ -5,7 +5,9 @@ class UserService {
 
   async create() {}
 
-  async find() {}
+  async findAll() {
+    return await models.User.findAll();
+  }
 
   async findByPk(id) {
     return await models.User.findByPk(id);
