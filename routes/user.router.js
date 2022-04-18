@@ -14,7 +14,12 @@ router.get(
   async (req, res) => {
     try {
       const { id } = req.params;
-      const user = await service.findByPk(id);
+      const { userId = id, email, createdAt } = await service.findByPk(id);
+      const user = {
+        userId,
+        email,
+        createdAt
+      }
 
       const language = req.header('language')
         ? req.header('language')
@@ -23,7 +28,9 @@ router.get(
         res.status(404).json({
           message: errorMessage[language].userNotFound,
         });
-      } else res.json(user);
+      } else {        
+        res.json(user);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +42,7 @@ router.get('/', async (req, res) => {
       ? req.header('language')
       : config.language;
     const users = await service.findAll();
-    console.log(users);
+    //console.log(users);
     if (users.length === 0) {
       res.status(404).json({
         message: errorMessage[language].recordsNotFound,

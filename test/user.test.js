@@ -1,7 +1,7 @@
 const { api } = require('./helpers');
 
 describe('/users', () => {
-  test('is status code 200 and contenttype json', async () => {
+  test('is status code 200, contenttype json, is array', async () => {
     const res = await api
       .get('/users')
       .set('Accept', 'application/json')
@@ -13,7 +13,7 @@ describe('/users', () => {
 });
 
 describe('/users:id', () => {
-  test('is status code 200', async () => {
+  test('is status code 200, contenttype json, is object, is object', async () => {
     const res = await api
       .get('/users/1')
       .set('Accept', 'application/json')
@@ -21,6 +21,6 @@ describe('/users:id', () => {
       .expect('Content-Type', /json/);
 
     expect(typeof res.body === 'object').toBe(true);
-    expect(res.body.id).toBe(1);
+    expect(res.body.userId).toBe("1");
   });
 });

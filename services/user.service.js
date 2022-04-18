@@ -6,7 +6,11 @@ class UserService {
   async create() {}
 
   async findAll() {
-    return await models.User.findAll();
+    return await models.User.findAll({
+      attributes: { 
+        exclude: ['password'] 
+      }
+    });
   }
 
   async findByPk(id) {
