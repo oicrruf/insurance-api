@@ -14,18 +14,13 @@ router.get(
   async (req, res) => {
     try {
       const { id } = req.params;
-      const { userId = id, email, createdAt } = await service.findByPk(id);
-      const user = {
-        userId,
-        email,
-        createdAt,
-      };
+      const user = await service.findByPk(id, 1);
 
       const language = req.header('language')
         ? req.header('language')
         : config.language;
-      if (!user) {
-        res.status(404).json({
+      if (!user) {        
+        res.status(404).json({          
           message: errorMessage[language].userNotFound,
         });
       } else {
