@@ -14,14 +14,15 @@ class UserService {
   }
 
   async findByPk(id, noPassword = 0) {
-    if(noPassword == 0){
+    if (noPassword == 0) {
       return await models.User.findByPk(id);
-    }
-    else return await models.User.findByPk(id, {
-      attributes: {
-        exclude: ['password']
-      }
-    })    
+    } else {
+      return await models.User.findByPk(id, {
+        attributes: {
+          exclude: ['password'],
+        },
+      });
+    }      
   }
 
   async update() {}

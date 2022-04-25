@@ -19,8 +19,8 @@ router.get(
       const language = req.header('language')
         ? req.header('language')
         : config.language;
-      if (!user) {        
-        res.status(404).json({          
+      if (!user) {
+        res.status(404).json({
           message: errorMessage[language].userNotFound,
         });
       } else {
