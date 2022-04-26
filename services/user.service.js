@@ -6,11 +6,23 @@ class UserService {
   async create() {}
 
   async findAll() {
-    return await models.User.findAll();
+    return await models.User.findAll({
+      attributes: {
+        exclude: ['password'],
+      },
+    });
   }
 
-  async findByPk(id) {
-    return await models.User.findByPk(id);
+  async findByPk(id, noPassword = 0) {
+    if (noPassword == 0) {
+      return await models.User.findByPk(id);
+    } else {
+      return await models.User.findByPk(id, {
+        attributes: {
+          exclude: ['password'],
+        },
+      });
+    }      
   }
 
   async update() {}

@@ -1,7 +1,4 @@
-const supertest = require('supertest');
-const app = require('../app');
-
-const api = supertest(app);
+const { api } = require('./helpers');
 
 describe('/health', () => {
   test('is status code 200', async () => {
@@ -15,8 +12,9 @@ describe('/health', () => {
       .expect('Content-Type', /json/);
   });
 
-  test('to have name and version properties', async () => {
+  test('response is object and to have name and version properties', async () => {
     const res = await api.get('/health');
+    expect(typeof res.body === 'object').toBe(true);
     expect(res.body).toHaveProperty('name');
     expect(res.body).toHaveProperty('version');
   });
